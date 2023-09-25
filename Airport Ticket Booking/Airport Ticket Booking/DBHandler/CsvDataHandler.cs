@@ -4,12 +4,11 @@ using System.Globalization;
 
 namespace AirportTicketBooking.DBHandler
 {
-    internal class CsvDataHandler<TModel>
+    internal class CsvDataHandler<TKey, TModel, TMapper> where TKey : IEquatable<TKey> where TMapper : ClassMap<TModel>
     {
-        protected Dictionary<string, TModel> DataDictionary { get; set; } = new();
-
-        public async Task FetchData<TMapper>(
-            string path, Func<TModel, string> extractUnique) where TMapper : ClassMap<TModel>
+        protected Dictionary<TKey, TModel> DataDictionary { get; set; } = new();
+        public async Task FetchData(
+            string path, Func<TModel, TKey> extractUnique)
         {
             var csvConfig = new CsvConfiguration(CultureInfo.InvariantCulture)
             {

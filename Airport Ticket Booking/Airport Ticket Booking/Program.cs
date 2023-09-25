@@ -9,17 +9,24 @@ namespace AirportTicketBooking
     {
         public static async Task Main(string[] args)
         {
-            UserHandler userHandler = new();
-            await userHandler.FetchData<UserMap>(Paths.UserDBPath, user => user.Email);
+            UserDataHandler userDataHandler = new();
+            await userDataHandler.FetchData(Paths.UserDBPath, user => user.Email);
             PrintWelcome();
             LogInInterface logInInterface = new();
-            (UserType userType, string email) = logInInterface.Start(userHandler);
+            (UserType userType, string email) = logInInterface.Start(userDataHandler);
+
+            FlightDataHandler flightDataHandler = new();
+            await flightDataHandler.FetchData(Paths.FlightDBPath, flight => flight.Id);
             IUserInterface userInterface;
             if (userType == UserType.Passenger)
+            {
                 userInterface = new PassengerInterface();
+            }
             else
+            {
                 userInterface = new ManagerInterface();
-            userInterface.Start(email);
+            }
+            userInterface.Start(email, flightDataHandler);
             Console.ReadKey();
         }
 

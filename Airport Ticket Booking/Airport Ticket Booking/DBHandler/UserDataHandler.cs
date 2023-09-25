@@ -6,7 +6,7 @@ using AirportTicketBooking.Enums;
 
 namespace AirportTicketBooking.DBHandler
 {
-    internal class UserHandler : CsvDataHandler<User>
+    internal class UserDataHandler : CsvDataHandler<string, User, UserMap>
     {
         public (bool, UserType) Validate(string email, string password)
         {

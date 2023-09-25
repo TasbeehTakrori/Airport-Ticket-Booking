@@ -1,10 +1,11 @@
-﻿using System;
+﻿using AirportTicketBooking.DBHandler;
+using System;
 
 namespace AirportTicketBooking.Interfaces
 {
     internal class ManagerInterface : IUserInterface
     {
-        public void Start(string email)
+        public void Start(string email, FlightDataHandler flightDataHandler)
         {
             Console.WriteLine("ManagerInterface");
         }

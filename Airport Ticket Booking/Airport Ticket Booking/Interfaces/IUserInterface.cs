@@ -1,7 +1,9 @@
-﻿namespace AirportTicketBooking.Interfaces
+﻿using AirportTicketBooking.DBHandler;
+
+namespace AirportTicketBooking.Interfaces
 {
     internal interface IUserInterface
     {
-        void Start(string email);
+        void Start(string email, FlightDataHandler flightDataHandler);
     }
 }

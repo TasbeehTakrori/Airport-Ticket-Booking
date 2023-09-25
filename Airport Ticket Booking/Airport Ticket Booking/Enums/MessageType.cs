@@ -5,5 +5,6 @@
         Error = ConsoleColor.Red,
         Success = ConsoleColor.Green,
         Information = ConsoleColor.Blue,
+        Menu = ConsoleColor.DarkYellow,
     }
 }
