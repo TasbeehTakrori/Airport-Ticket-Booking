@@ -6,7 +6,7 @@ namespace AirportTicketBooking.Interfaces
 {
     internal class PassengerInterface : IUserInterface
     {
-        Dictionary<string, ICommand> passangerCommands = new()
+        Dictionary<string, ICommandPassenger> passangerCommands = new()
         {
                 { "search", new SearchCommand()},
                 { "book", new BookCommand()},
@@ -20,7 +20,7 @@ namespace AirportTicketBooking.Interfaces
         {
 
             Console.WriteLine("*** PassangerInterface ***");
-            ICommand command;
+            ICommandPassenger command;
             List<object> result;
             while (true)
             {

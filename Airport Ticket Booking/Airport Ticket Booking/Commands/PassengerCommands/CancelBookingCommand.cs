@@ -2,7 +2,7 @@
 
 namespace AirportTicketBooking.Commands.PassengerCommands
 {
-    internal class CancelBookingCommand : ICommand
+    internal class CancelBookingCommand : ICommandPassenger
     {
         public List<object> Execute(string userEmail, string[] parameters, FlightDataHandler flightDataHandler, BookingDataHandler bookingDataHandler)
         {

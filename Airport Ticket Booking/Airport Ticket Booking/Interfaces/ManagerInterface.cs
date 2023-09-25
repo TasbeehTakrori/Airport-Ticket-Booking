@@ -7,7 +7,8 @@ namespace AirportTicketBooking.Interfaces
     {
         public void Start(string email, FlightDataHandler flightDataHandler, BookingDataHandler bookingDataHandler)
         {
-            Console.WriteLine("ManagerInterface");
+            Console.WriteLine("*** ManagerInterface ***");
+
         }
     }
 }

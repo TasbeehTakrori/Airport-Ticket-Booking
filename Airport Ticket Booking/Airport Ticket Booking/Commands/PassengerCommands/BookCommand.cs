@@ -3,7 +3,7 @@ using AirportTicketBooking.Enums;
 
 namespace AirportTicketBooking.Commands.PassengerCommands
 {
-    internal class BookCommand : ICommand
+    internal class BookCommand : ICommandPassenger
     {
         public List<object> Execute(string userEmail, string[] parameters, FlightDataHandler flightDataHandler, BookingDataHandler bookingDataHandler)
         {

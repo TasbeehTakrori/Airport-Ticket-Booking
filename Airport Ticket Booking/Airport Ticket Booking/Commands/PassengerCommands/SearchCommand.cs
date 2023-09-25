@@ -5,7 +5,7 @@ using System.Diagnostics.Metrics;
 
 namespace AirportTicketBooking.Commands.PassengerCommands
 {
-    internal class SearchCommand : ICommand
+    internal class SearchCommand : ICommandPassenger
     {
         private Dictionary<string, Func<Flight, string, bool>> parameterDictionary = new()
         {
