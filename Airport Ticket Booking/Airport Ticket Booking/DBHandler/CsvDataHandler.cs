@@ -10,6 +10,7 @@ namespace AirportTicketBooking.DBHandler
         public async Task FetchData(
             string path, Func<TModel, TKey> extractUnique)
         {
+            DataDictionary.Clear();
             var csvConfig = new CsvConfiguration(CultureInfo.InvariantCulture)
             {
                 HasHeaderRecord = true,
