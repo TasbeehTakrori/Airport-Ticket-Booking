@@ -1,7 +1,7 @@
 ﻿
 namespace AirportTicketBooking.Models
 {
-    internal class Flight
+    public class Flight
     {
         public required int Id { get; set; }
         public required string DepartureCountry { get; set; }
@@ -14,7 +14,9 @@ namespace AirportTicketBooking.Models
         public required int FirstClassPrice { get; set; }
         public override string ToString()
         {
-            return $"** Flight ID: {Id},\t DepartureCountry:{DepartureCountry},\t DestinationCountry:{DestinationCountry},\n   DepartureDate: {DepartureDate},\t DepartureAirport: {DepartureAirport},\t ArrivalAirport: {ArrivalAirport},\n   EconomyPrice: {EconomyPrice}, BusinessPrice: {BusinessPrice},\t FirstClassPrice: {FirstClassPrice}";
+            return @$"Flight ID: {Id} | DepartureCountry:{DepartureCountry} | DestinationCountry:{DestinationCountry}
+                      DepartureDate: {DepartureDate} | DepartureAirport: {DepartureAirport} | ArrivalAirport: {ArrivalAirport}
+                      EconomyPrice: {EconomyPrice} | BusinessPrice: {BusinessPrice} | FirstClassPrice: {FirstClassPrice}";
         }
     }
 }

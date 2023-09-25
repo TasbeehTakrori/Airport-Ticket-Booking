@@ -1,7 +1,5 @@
-﻿
-using AirportTicketBooking.DBHandler;
+﻿using AirportTicketBooking.DBHandler;
 using AirportTicketBooking.Enums;
-using AirportTicketBooking.Models;
 
 namespace AirportTicketBooking.Commands.PassengerCommands
 {
@@ -24,7 +22,8 @@ namespace AirportTicketBooking.Commands.PassengerCommands
 
         private ClassType ParseClassType(string value)
         {
-            Enum.TryParse(value, out ClassType classType);
+            string upperValue = char.ToUpperInvariant(value[0]) + value.Substring(1);
+            Enum.TryParse(upperValue, out ClassType classType);
             return classType;
         }
 
@@ -34,7 +33,6 @@ namespace AirportTicketBooking.Commands.PassengerCommands
             if (!AllParametersExist(parametersDictionary)) return false;
             else if (!AllParametersParsable(parametersDictionary)) return false;
             return true;
-
         }
 
         private bool AllParametersParsable(Dictionary<string, string> parametersDictionary)

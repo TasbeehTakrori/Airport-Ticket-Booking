@@ -10,7 +10,8 @@ namespace AirportTicketBooking.Interfaces
         {
                 { "search", new SearchCommand()},
                 { "book", new BookCommand()},
-                { "exit", new ExitCommand() }
+                { "exit", new ExitCommand() },
+                { "mybookings", new MyBookingCommand() }
         };
 
         public void Start(string email, FlightDataHandler flightDataHandler, BookingDataHandler bookingDataHandler)
@@ -53,6 +54,7 @@ namespace AirportTicketBooking.Interfaces
             * Enter Help to learn how to use each command..
             * Enter [ Serch : your arguments ] to search for a flight..
             * Enter [ Book : BookID=? , Class=? ] to book a flight..
+            * Enter [ MyBookings ] to desplay your bookings..
             * Enter Exit to exit..", MessageType.Menu);
         }
         private (string, string[]) ReadPassengerCommand()
@@ -63,7 +65,7 @@ namespace AirportTicketBooking.Interfaces
             {
                 string userInput = Console.ReadLine() ?? string.Empty;
                 string[] inputSplit = userInput.Trim().Split(":");
-                commandName = inputSplit[0].Trim();
+                commandName = inputSplit[0].Trim().ToLower();
                 string[] parameters = CleanParameters(inputSplit[1]);
                 return (commandName, parameters);
             }
