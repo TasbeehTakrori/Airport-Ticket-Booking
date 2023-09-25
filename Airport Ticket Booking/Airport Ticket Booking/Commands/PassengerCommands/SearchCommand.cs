@@ -10,6 +10,7 @@ namespace AirportTicketBooking.Commands.PassengerCommands
         private Dictionary<string, Func<Flight, string, bool>> parameterDictionary = new()
         {
                 { "departurecountry", (flight, value) => flight.DepartureCountry == value },
+                { "id", (flight, value) => flight.Id == TryParseIntOrDefult(value) },
                 { "depc", (flight, value) => flight.DepartureCountry == value },
                 { "destinationcountry", (flight, value) => flight.DestinationCountry == value },
                 { "desc", (flight, value) => flight.DestinationCountry == value },
@@ -19,8 +20,8 @@ namespace AirportTicketBooking.Commands.PassengerCommands
                 { "arra", (flight, value) => flight.ArrivalAirport == value },
                 { "departuredate", (flight, value) => flight.DepartureDate.Date == TryParseDateOrDefult(value)},
                 { "date", (flight, value) => flight.DepartureDate.Date == TryParseDateOrDefult(value).Date},
-                { "price", (flight, value) => flight.EconomyPrice <= TryParsePriceOrDefult(value) || flight.BusinessPrice <= TryParsePriceOrDefult(value) || flight.FirstClassPrice <= TryParsePriceOrDefult(value) },
-                { "p", (flight, value) => flight.EconomyPrice <= TryParsePriceOrDefult(value) || flight.BusinessPrice <= TryParsePriceOrDefult(value) || flight.FirstClassPrice <= TryParsePriceOrDefult(value) },
+                { "price", (flight, value) => flight.EconomyPrice <= TryParseIntOrDefult(value) || flight.BusinessPrice <= TryParseIntOrDefult(value) || flight.FirstClassPrice <= TryParseIntOrDefult(value) },
+                { "p", (flight, value) => flight.EconomyPrice <= TryParseIntOrDefult(value) || flight.BusinessPrice <= TryParseIntOrDefult(value) || flight.FirstClassPrice <= TryParseIntOrDefult(value) },
         };
 
         public List<object> Execute(string userEmail, string[] parameters, FlightDataHandler flightDataHandler, BookingDataHandler bookingDataHandler)
@@ -47,7 +48,7 @@ namespace AirportTicketBooking.Commands.PassengerCommands
             parameterDictionary!.TryGetValue(paramaterName, out var condition);
             return condition ?? ((flight, value) => false);
         }
-        private static int TryParsePriceOrDefult(string value)
+        private static int TryParseIntOrDefult(string value)
         {
             if (int.TryParse(value, out int result))
                 return result;
