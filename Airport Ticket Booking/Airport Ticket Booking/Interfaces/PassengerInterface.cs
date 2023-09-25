@@ -32,6 +32,10 @@ namespace AirportTicketBooking.Interfaces
                     result = command.Execute(email, commandParameters, flightDataHandler, bookingDataHandler);
                     Desplay(result);
                 }
+                else if (commandName.ToLower().Equals("logout"))
+                {
+                    return;
+                }
                 else
                 {
                     Utilities.PrintMessage($"{commandName} Command does not exist! enter Help to learn more..", MessageType.Error);
@@ -59,6 +63,7 @@ namespace AirportTicketBooking.Interfaces
             * Enter [ MyBookings ] to desplay your bookings..
             * Enter [ ModifyBooking : flightId=? , newClass=? ] to edit specific booking..
             * Enter [ CancelBooking : flightId=? ] to cancle specific booking..
+            * Enter [ LogOut ] to return to LogIn Interface..
             * Enter Exit to exit..", MessageType.Menu);
         }
         private (string, string[]) ReadPassengerCommand()

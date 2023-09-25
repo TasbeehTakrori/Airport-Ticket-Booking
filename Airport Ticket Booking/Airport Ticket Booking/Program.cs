@@ -13,23 +13,25 @@ namespace AirportTicketBooking
             await userDataHandler.FetchData(Paths.UserDBPath, user => user.Email);
             PrintWelcome();
             LogInInterface logInInterface = new();
-            (UserType userType, string email) = logInInterface.Start(userDataHandler);
+            while (true)
+            {
+                (UserType userType, string email) = logInInterface.Start(userDataHandler);
 
-            FlightDataHandler flightDataHandler = new();
-            await flightDataHandler.FetchData(Paths.FlightDBPath, flight => flight.Id);
-            BookingDataHandler bookingDataHandler = new();
-            await bookingDataHandler.FetchData(Paths.BookingDBPath, booking => booking.FlightID + booking.PassengerEmail);
-            IUserInterface userInterface;
-            if (userType == UserType.Passenger)
-            {
-                userInterface = new PassengerInterface();
+                FlightDataHandler flightDataHandler = new();
+                await flightDataHandler.FetchData(Paths.FlightDBPath, flight => flight.Id);
+                BookingDataHandler bookingDataHandler = new();
+                await bookingDataHandler.FetchData(Paths.BookingDBPath, booking => booking.FlightID + booking.PassengerEmail);
+                IUserInterface userInterface;
+                if (userType == UserType.Passenger)
+                {
+                    userInterface = new PassengerInterface();
+                }
+                else
+                {
+                    userInterface = new ManagerInterface();
+                }
+                userInterface.Start(email, flightDataHandler, bookingDataHandler);
             }
-            else
-            {
-                userInterface = new ManagerInterface();
-            }
-            userInterface.Start(email, flightDataHandler, bookingDataHandler);
-            Console.ReadKey();
         }
 
         static void PrintWelcome()
