@@ -11,7 +11,8 @@ namespace AirportTicketBooking.Interfaces
                 { "search", new SearchCommand()},
                 { "book", new BookCommand()},
                 { "exit", new ExitCommand() },
-                { "mybookings", new MyBookingCommand() }
+                { "mybookings", new MyBookingCommand() },
+                { "modifybooking", new ModifyBookingCommand() }
         };
 
         public void Start(string email, FlightDataHandler flightDataHandler, BookingDataHandler bookingDataHandler)
@@ -55,6 +56,7 @@ namespace AirportTicketBooking.Interfaces
             * Enter [ Serch : your arguments ] to search for a flight..
             * Enter [ Book : BookID=? , Class=? ] to book a flight..
             * Enter [ MyBookings ] to desplay your bookings..
+            * Enter [ ModifyBooking : flightId=? , newClass=? ] to edit specific booking..
             * Enter Exit to exit..", MessageType.Menu);
         }
         private (string, string[]) ReadPassengerCommand()

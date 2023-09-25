@@ -13,6 +13,14 @@ namespace AirportTicketBooking.DBHandler
             return DataDictionary.ContainsKey(flightID + userEmail);
         }
 
+        internal void ModifyBooking(string userEmail, int flightID, ClassType classType)
+        {
+            DeleteRecord(Paths.BookingDBPath, flightID + userEmail);
+            Booking newBooking = new() { PassengerEmail = userEmail, FlightID = flightID, Class = classType };
+            AppendData(Paths.BookingDBPath, newBooking);
+            Task.Run(() => ReFetchData());
+        }
+
         internal List<MyBooking> GetMyBookings(string userEmail, FlightDataHandler flightDataHandler)
         {
             return DataDictionary.Where(item => item.Key.Contains(userEmail)).
@@ -41,6 +49,5 @@ namespace AirportTicketBooking.DBHandler
                 Console.WriteLine(e);
             }
         }
-
     }
 }

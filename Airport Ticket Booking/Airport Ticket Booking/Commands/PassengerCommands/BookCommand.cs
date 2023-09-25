@@ -8,7 +8,8 @@ namespace AirportTicketBooking.Commands.PassengerCommands
         public List<object> Execute(string userEmail, string[] parameters, FlightDataHandler flightDataHandler, BookingDataHandler bookingDataHandler)
         {
             Dictionary<string, string> parametersDictionary = FetchParameters(parameters);
-            if (!AreParametersValid(parametersDictionary)) return new() { "Failed!" };
+            if (!AreParametersValid(parametersDictionary))
+                return new() { "Failed!" };
             if (bookingDataHandler.AlreadyBooked(userEmail, parametersDictionary["flightid"]))
                 return new() { "You already booked it!" };
             int flightID = int.Parse(parametersDictionary["flightid"]);
@@ -20,14 +21,14 @@ namespace AirportTicketBooking.Commands.PassengerCommands
                 return new() { "Flight booking was successful!" };
         }
 
-        private ClassType ParseClassType(string value)
+        protected ClassType ParseClassType(string value)
         {
             string upperValue = char.ToUpperInvariant(value[0]) + value.Substring(1);
             Enum.TryParse(upperValue, out ClassType classType);
             return classType;
         }
 
-        private bool AreParametersValid(Dictionary<string, string> parametersDictionary)
+        protected bool AreParametersValid(Dictionary<string, string> parametersDictionary)
         {
             if (parametersDictionary.Count != 2) return false;
             if (!AllParametersExist(parametersDictionary)) return false;
@@ -60,7 +61,7 @@ namespace AirportTicketBooking.Commands.PassengerCommands
             else return false;
         }
 
-        private Dictionary<string, string> FetchParameters(string[] parameters)
+        protected Dictionary<string, string> FetchParameters(string[] parameters)
         {
             Dictionary<string, string> parametersDictionary = new();
             foreach (var parameter in parameters)

@@ -1,6 +1,10 @@
 ﻿using CsvHelper;
 using CsvHelper.Configuration;
+using System.Collections.Generic;
+using System.Formats.Asn1;
 using System.Globalization;
+using static System.Reflection.Metadata.BlobBuilder;
+using System.IO;
 
 namespace AirportTicketBooking.DBHandler
 {
@@ -29,8 +33,17 @@ namespace AirportTicketBooking.DBHandler
             using var stream = File.Open(path, FileMode.Append, FileAccess.Write);
             using var writer = new StreamWriter(stream);
             using var csvWriter = new CsvWriter(writer, new CsvConfiguration(CultureInfo.InvariantCulture));
-            csvWriter.NextRecord();
             csvWriter.WriteRecord(record);
+            csvWriter.NextRecord();
+        }
+        public void DeleteRecord(string path, TKey key)
+        {
+            DataDictionary.Remove(key);
+            using (var writer = new StreamWriter(path))
+            using (var csvWriter = new CsvWriter(writer, CultureInfo.InvariantCulture))
+            {
+                csvWriter.WriteRecords(DataDictionary.Values);
+            }
         }
     }
 }
