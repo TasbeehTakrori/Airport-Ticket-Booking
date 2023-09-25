@@ -1,6 +1,4 @@
 ﻿using AirportTicketBooking.Models;
-using System.Linq;
-using System.Linq.Expressions;
 
 namespace AirportTicketBooking.DBHandler
 {
@@ -14,6 +12,10 @@ namespace AirportTicketBooking.DBHandler
                 flights = flights.Where(flight => condition(flight, value)).ToList();
             }
             return flights;
+        }
+        public List<Flight> getFlightList() 
+        {
+            return DataDictionary.Values.ToList();
         }
 
         internal bool IsAvilableFlightID(int flightID)

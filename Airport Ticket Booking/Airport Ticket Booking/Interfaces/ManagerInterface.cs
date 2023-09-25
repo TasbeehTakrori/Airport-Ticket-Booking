@@ -1,4 +1,5 @@
 ﻿using AirportTicketBooking.Commands.ManagerCommands;
+using AirportTicketBooking.Commands.PassengerCommands;
 using AirportTicketBooking.DBHandler;
 using AirportTicketBooking.Enums;
 
@@ -8,7 +9,8 @@ namespace AirportTicketBooking.Interfaces
     {
         Dictionary<string, ICommandManager> _managerCommands = new()
         {
-            //{ "exit", new ExitCommand() },
+            { "exit",  new AirportTicketBooking.Commands.ManagerCommands.ExitCommand() },
+            { "filter", new FilterCommand() },
         };
         internal override void Start(FlightDataHandler flightDataHandler, BookingDataHandler bookingDataHandler)
         {

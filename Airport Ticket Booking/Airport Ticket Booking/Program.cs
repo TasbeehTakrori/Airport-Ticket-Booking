@@ -19,7 +19,7 @@ namespace AirportTicketBooking
                 FlightDataHandler flightDataHandler = new();
                 await flightDataHandler.FetchData(Paths.FlightDBPath, flight => flight.Id);
                 BookingDataHandler bookingDataHandler = new();
-                await bookingDataHandler.FetchData(Paths.BookingDBPath, booking => booking.FlightID + booking.PassengerEmail);
+                await bookingDataHandler.FetchData(Paths.BookingDBPath, booking => booking.FlightId + booking.PassengerEmail);
                 UserInterface userInterface;
                 if (userType == UserType.Passenger)
                 {
