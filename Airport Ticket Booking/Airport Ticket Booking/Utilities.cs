@@ -1,9 +1,4 @@
 ﻿using AirportTicketBooking.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AirportTicketBooking
 {
@@ -24,7 +19,7 @@ namespace AirportTicketBooking
                 string[] paramaterSplit = paramater.Split('=');
                 if (paramaterSplit.Length < 2)
                     paramaterSplit = paramater.Split(' ');
-                string paramaterName = paramaterSplit[0].Trim();
+                string paramaterName = paramaterSplit[0].Trim().ToLower();
                 string value = paramaterSplit[1].Trim() ?? string.Empty;
                 return (paramaterName, value);
             }

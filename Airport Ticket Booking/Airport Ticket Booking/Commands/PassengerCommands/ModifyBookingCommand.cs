@@ -1,6 +1,5 @@
 ﻿using AirportTicketBooking.DBHandler;
 using AirportTicketBooking.Enums;
-using AirportTicketBooking.Models;
 
 namespace AirportTicketBooking.Commands.PassengerCommands
 {

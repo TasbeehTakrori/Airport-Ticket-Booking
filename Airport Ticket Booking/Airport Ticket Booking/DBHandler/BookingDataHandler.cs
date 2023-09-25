@@ -1,9 +1,6 @@
 ﻿using AirportTicketBooking.Models;
 using AirportTicketBooking.Enums;
 
-using System.Linq;
-using System.Linq.Expressions;
-
 namespace AirportTicketBooking.DBHandler
 {
     internal class BookingDataHandler : CsvDataHandler<string, Booking, BookingMap>
