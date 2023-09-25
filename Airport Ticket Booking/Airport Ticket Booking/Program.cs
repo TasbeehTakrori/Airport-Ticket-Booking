@@ -1,7 +1,6 @@
 ﻿using AirportTicketBooking.DBHandler;
 using AirportTicketBooking.Enums;
 using AirportTicketBooking.Interfaces;
-using AirportTicketBooking.Models;
 
 namespace AirportTicketBooking
 {
@@ -21,16 +20,18 @@ namespace AirportTicketBooking
                 await flightDataHandler.FetchData(Paths.FlightDBPath, flight => flight.Id);
                 BookingDataHandler bookingDataHandler = new();
                 await bookingDataHandler.FetchData(Paths.BookingDBPath, booking => booking.FlightID + booking.PassengerEmail);
-                IUserInterface userInterface;
+                UserInterface userInterface;
                 if (userType == UserType.Passenger)
                 {
                     userInterface = new PassengerInterface();
+                    userInterface.Start(email, flightDataHandler, bookingDataHandler);
                 }
                 else
                 {
                     userInterface = new ManagerInterface();
+                    userInterface.Start(flightDataHandler, bookingDataHandler);
                 }
-                userInterface.Start(email, flightDataHandler, bookingDataHandler);
+
             }
         }
 
@@ -43,5 +44,4 @@ namespace AirportTicketBooking
             Console.ReadKey();
         }
     }
-
 }

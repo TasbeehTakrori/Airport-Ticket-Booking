@@ -1,9 +1,9 @@
 ﻿using AirportTicketBooking.DBHandler;
 using AirportTicketBooking.Models;
 
-namespace AirportTicketBooking.Commands.PassengerCommands
+namespace AirportTicketBooking.Commands.ManagerCommands
 {
-    internal class SearchCommand : ICommandPassenger
+    internal class FilterCommand : ICommandManager
     {
         private Dictionary<string, Func<Flight, string, bool>> parameterDictionary = new()
         {
@@ -22,7 +22,7 @@ namespace AirportTicketBooking.Commands.PassengerCommands
                 { "p", (flight, value) => flight.EconomyPrice <= TryParseIntOrDefult(value) || flight.BusinessPrice <= TryParseIntOrDefult(value) || flight.FirstClassPrice <= TryParseIntOrDefult(value) },
         };
 
-        public List<object> Execute(string userEmail, string[] parameters, FlightDataHandler flightDataHandler, BookingDataHandler bookingDataHandler)
+        public List<object> Execute(string[] parameters, FlightDataHandler flightDataHandler, BookingDataHandler bookingDataHandler)
         {
             List<(Func<Flight, string, bool> condition, string value)> filters = PrepareFilters(parameters);
             List<Flight> flights = flightDataHandler.Filter(filters);

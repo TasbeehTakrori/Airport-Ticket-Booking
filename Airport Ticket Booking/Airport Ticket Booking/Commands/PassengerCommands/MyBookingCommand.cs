@@ -1,5 +1,4 @@
-﻿
-using AirportTicketBooking.DBHandler;
+﻿using AirportTicketBooking.DBHandler;
 using AirportTicketBooking.Models;
 
 namespace AirportTicketBooking.Commands.PassengerCommands

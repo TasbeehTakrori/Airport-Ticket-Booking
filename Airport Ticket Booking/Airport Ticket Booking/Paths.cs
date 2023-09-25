@@ -1,5 +1,4 @@
-﻿
-namespace AirportTicketBooking
+﻿namespace AirportTicketBooking
 {
     static internal class Paths
     {
