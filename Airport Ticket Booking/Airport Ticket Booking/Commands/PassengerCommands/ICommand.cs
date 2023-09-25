@@ -6,6 +6,6 @@ namespace AirportTicketBooking.Commands.PassengerCommands
 {
     internal interface ICommand
     {
-        List<object> Execute(string userEmail, string[] Parameters, FlightDataHandler flightDataHandler);
+        List<object> Execute(string userEmail, string[] parameters, FlightDataHandler flightDataHandler, BookingDataHandler bookingDataHandler);
     }
 }

@@ -17,6 +17,8 @@ namespace AirportTicketBooking
 
             FlightDataHandler flightDataHandler = new();
             await flightDataHandler.FetchData(Paths.FlightDBPath, flight => flight.Id);
+            BookingDataHandler bookingDataHandler = new();
+            await bookingDataHandler.FetchData(Paths.BookingDBPath, booking => booking.FlightID + booking.PassengerEmail);
             IUserInterface userInterface;
             if (userType == UserType.Passenger)
             {
@@ -26,7 +28,7 @@ namespace AirportTicketBooking
             {
                 userInterface = new ManagerInterface();
             }
-            userInterface.Start(email, flightDataHandler);
+            userInterface.Start(email, flightDataHandler, bookingDataHandler);
             Console.ReadKey();
         }
 

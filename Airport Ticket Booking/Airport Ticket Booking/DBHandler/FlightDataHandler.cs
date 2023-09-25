@@ -15,5 +15,10 @@ namespace AirportTicketBooking.DBHandler
             }
             return flights;
         }
+
+        internal bool IsAvilableFlightID(int flightID)
+        {
+            return DataDictionary.ContainsKey(flightID);
+        }
     }
 }

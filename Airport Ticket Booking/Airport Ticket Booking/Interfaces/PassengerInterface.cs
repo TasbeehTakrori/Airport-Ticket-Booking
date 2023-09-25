@@ -13,7 +13,7 @@ namespace AirportTicketBooking.Interfaces
                 { "exit", new ExitCommand() }
         };
 
-        public void Start(string email, FlightDataHandler flightDataHandler)
+        public void Start(string email, FlightDataHandler flightDataHandler, BookingDataHandler bookingDataHandler)
         {
 
             Console.WriteLine("*** PassangerInterface ***");
@@ -26,7 +26,7 @@ namespace AirportTicketBooking.Interfaces
                 if (passangerCommands.ContainsKey(commandName))
                 {
                     command = passangerCommands[commandName];
-                    result = command.Execute(email, commandParameters, flightDataHandler);
+                    result = command.Execute(email, commandParameters, flightDataHandler, bookingDataHandler);
                     Desplay(result);
                 }
                 else
@@ -39,7 +39,6 @@ namespace AirportTicketBooking.Interfaces
 
         private void Desplay(List<object> result)
         {
-            Console.WriteLine(result.Count());
 
             foreach (var item in result)
             {
@@ -52,8 +51,8 @@ namespace AirportTicketBooking.Interfaces
         {
             Utilities.PrintMessage(@"
             * Enter Help to learn how to use each command..
-            * Enter Serch {your arguments} to search for a flight..
-            * Enter Book {BookID=? , Class=?} to book a flight..
+            * Enter [ Serch : your arguments ] to search for a flight..
+            * Enter [ Book : BookID=? , Class=? ] to book a flight..
             * Enter Exit to exit..", MessageType.Menu);
         }
         private (string, string[]) ReadPassengerCommand()

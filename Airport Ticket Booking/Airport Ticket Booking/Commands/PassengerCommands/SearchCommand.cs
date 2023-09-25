@@ -23,27 +23,23 @@ namespace AirportTicketBooking.Commands.PassengerCommands
                 { "p", (flight, value) => flight.EconomyPrice <= TryParsePriceOrDefult(value) || flight.BusinessPrice <= TryParsePriceOrDefult(value) || flight.FirstClassPrice <= TryParsePriceOrDefult(value) },
         };
 
-        public List<object> Execute(string userEmail, string[] Parameters, FlightDataHandler flightDataHandler)
+        public List<object> Execute(string userEmail, string[] parameters, FlightDataHandler flightDataHandler, BookingDataHandler bookingDataHandler)
         {
-            List<(Func<Flight, string, bool> condition, string value)> filters = new();
-            foreach (var paramater in Parameters)
-            {
-                (string parameterName, string value) = SplitParameterNameFromValue(paramater);
-                filters.Add((GetExpression(parameterName), value));
-            }
+            List<(Func<Flight, string, bool> condition, string value)> filters = PrepareFilters(parameters);
             List<Flight> flights = flightDataHandler.Filter(filters);
             List<object> flightsObject = flights.Cast<object>().ToList();
             return flightsObject;
         }
 
-        private (string parameterName, string value) SplitParameterNameFromValue(string paramater)
+        private List<(Func<Flight, string, bool> condition, string value)> PrepareFilters(string[] parameters)
         {
-            string[] paramaterSplit = paramater.Split('=');
-            if (paramaterSplit.Length < 2)
-                paramaterSplit = paramater.Split(' ');
-            string paramaterName = paramaterSplit[0].Trim();
-            string value = paramaterSplit[1].Trim() ?? string.Empty;
-            return (paramaterName, value);
+            List<(Func<Flight, string, bool> condition, string value)> filters = new();
+            foreach (var paramater in parameters)
+            {
+                (string parameterName, string value) = Utilities.SplitParameterNameFromValue(paramater);
+                filters.Add((GetExpression(parameterName), value));
+            }
+            return filters;
         }
 
         private Func<Flight, string, bool> GetExpression(string paramaterName)

@@ -23,5 +23,13 @@ namespace AirportTicketBooking.DBHandler
                 DataDictionary.Add(extractUnique(record), record);
             }
         }
+        public void AppendData(string path, TModel record)
+        {
+            using var stream = File.Open(path, FileMode.Append, FileAccess.Write);
+            using var writer = new StreamWriter(stream);
+            using var csvWriter = new CsvWriter(writer, new CsvConfiguration(CultureInfo.InvariantCulture));
+            csvWriter.NextRecord();
+            csvWriter.WriteRecord(record);
+        }
     }
 }
