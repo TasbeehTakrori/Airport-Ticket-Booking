@@ -95,7 +95,7 @@ Follow these steps to set up and run the Airport Ticket Booking system:
 
 3. **Dynamic Model Validation Details:**
    To understand validation constraints for each field of the flight data model:
-   - Use "ValidationDetails" Command.
+   - Use `ValidationDetails` Command.
 
 
 
