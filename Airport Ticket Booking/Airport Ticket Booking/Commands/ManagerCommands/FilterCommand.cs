@@ -19,12 +19,17 @@ namespace AirportTicketBooking.Commands.ManagerCommands
                 { "depa", (biiking, flight, value) => flight.DepartureAirport == value },
                 { "arrivalairport", (booking, flight, value) => flight.ArrivalAirport == value },
                 { "arra", (booking, flight, value) => flight.ArrivalAirport == value },
-                { "departuredate", (booking, flight, value) => flight.DepartureDate.Date == TryParseDateOrDefult(value)},
-                { "date", (booking, flight, value) => flight.DepartureDate.Date == TryParseDateOrDefult(value).Date},
-                { "price", (booking, flight, value) => flight.EconomyPrice <= TryParseDecimalOrDefult(value) || flight.BusinessPrice <= TryParseDecimalOrDefult(value) || flight.FirstClassPrice <= TryParseDecimalOrDefult(value) },
-                { "p", (booking, flight, value) => flight.EconomyPrice <= TryParseDecimalOrDefult(value) || flight.BusinessPrice <= TryParseDecimalOrDefult(value) || flight.FirstClassPrice <= TryParseDecimalOrDefult(value) },
+                { "departuredate", (booking, flight, value) => flight.DepartureDate.Date! == TryParseDateOrDefult(value).Date},
+                { "date", (booking, flight, value) => flight.DepartureDate.Date! == TryParseDateOrDefult(value).Date},
+                { "price", getPriceExpression()},
+                { "p", getPriceExpression()},
         };
 
+        static Func<Booking, Flight, string, bool> getPriceExpression()
+        {
+            return (booking, flight, value) => (flight.EconomyPrice <= TryParseDecimalOrDefult(value) && booking.Class == ClassType.Economy) || (flight.BusinessPrice <= TryParseDecimalOrDefult(value) && booking.Class == ClassType.Business) || (flight.FirstClassPrice <= TryParseDecimalOrDefult(value) && booking.Class == ClassType.First);
+
+        }
         public List<object> Execute(string[] parameters, FlightDataHandler flightDataHandler, BookingDataHandler bookingDataHandler)
         {
             List<(Func<Booking, Flight, string, bool> condition, string value)> filters = PrepareFilters(parameters);

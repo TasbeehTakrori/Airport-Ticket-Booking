@@ -1,5 +1,6 @@
 ﻿using AirportTicketBooking.DBHandler;
 using AirportTicketBooking.Enums;
+using System.Reflection.Metadata;
 
 namespace AirportTicketBooking.Interfaces
 {
@@ -25,14 +26,14 @@ namespace AirportTicketBooking.Interfaces
             try
             {
                 string userInput = Console.ReadLine() ?? string.Empty;
-                string[] inputSplit = userInput.Trim().Split(":");
+                string[] inputSplit = userInput.Trim().Split(">");
                 commandName = inputSplit[0].Trim().ToLower();
-                string[] parameters = CleanParameters(inputSplit[1]);
+                string[] parameters = CleanParameters(inputSplit[1]) ?? new string[] { string.Empty };
                 return (commandName, parameters);
             }
             catch (Exception)
             {
-                return (commandName, new string[0]);
+                return (commandName, new string[] { string.Empty });
             }
         }
         private string[] CleanParameters(string parameters)

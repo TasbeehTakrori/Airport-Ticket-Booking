@@ -11,6 +11,7 @@ namespace AirportTicketBooking.Interfaces
             { "exit",  new ExitCommand() },
             { "filter", new FilterCommand() },
             { "validationdetails", new ValidationDetailsCommand() },
+            { "uploadflights", new UploadFlightsCommand() },
 
         };
         internal override void Start(FlightDataHandler flightDataHandler, BookingDataHandler bookingDataHandler)
@@ -41,9 +42,13 @@ namespace AirportTicketBooking.Interfaces
         void PrintManagerMenu()
         {
             Utilities.PrintMessage(@"
-            * Enter Help to learn how to use each command..
-            * Enter [ Filter : parameters=?... ] to filter booking..
+            * Enter [ Filter > One Or More Available Parameters ] to filter booking..
+
+                     Available Parameters: DepartureCountry = ?  DestinationCountry = ? , DepartureDate = ?
+                     DepartureAirport = ? ,  ArrivalAirport = ?  passenger = ? , class = ? Price = ? , 
+
             * Enter [ ValidationDetails ] to display validation details flight..
+            * Enter [ UploadFlights > path = FullPath ] to Upload Flights..
             * Enter [ LogOut ] to return to LogIn Interface..
             * Enter Exit to exit..", MessageType.Menu);
         }

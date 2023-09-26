@@ -32,6 +32,17 @@ namespace AirportTicketBooking.DBHandler
             csvWriter.WriteRecord(record);
             csvWriter.NextRecord();
         }
+        public void AppendDatas(string path, List<TModel> records)
+        {
+            var csvConfig = new CsvConfiguration(CultureInfo.InvariantCulture)
+            {
+                HasHeaderRecord = false,
+            };
+            using var stream = File.Open(path, FileMode.Append, FileAccess.Write);
+            using var writer = new StreamWriter(stream);
+            using var csvWriter = new CsvWriter(writer, csvConfig);
+            csvWriter.WriteRecords(records);
+        }
         public void DeleteRecord(string path, TKey key)
         {
             DataDictionary.Remove(key);

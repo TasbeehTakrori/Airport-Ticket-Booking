@@ -41,7 +41,7 @@ namespace AirportTicketBooking.DBHandler
 
         internal bool TryBooking(string userEmail, int flightID, ClassType classType, FlightDataHandler flightDataHandler)
         {
-            if (!flightDataHandler.IsAvilableFlightID(flightID))
+            if (!flightDataHandler.IsAvailableFlightID(flightID))
                 return false;
             else
                 AppendData(Paths.BookingDBPath, new Booking() { FlightId = flightID, PassengerEmail = userEmail, Class = classType });

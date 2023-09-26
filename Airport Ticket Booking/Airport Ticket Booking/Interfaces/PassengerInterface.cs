@@ -1,6 +1,9 @@
 ﻿using AirportTicketBooking.DBHandler;
 using AirportTicketBooking.Enums;
 using AirportTicketBooking.Commands.PassengerCommands;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Diagnostics.Metrics;
+using System.Diagnostics;
 
 namespace AirportTicketBooking.Interfaces
 {
@@ -46,12 +49,15 @@ namespace AirportTicketBooking.Interfaces
         void PrintPassengerMenu()
         {
             Utilities.PrintMessage(@"
-            * Enter Help to learn how to use each command..
-            * Enter [ Serch : your arguments ] to search for a flight..
-            * Enter [ Book : BookID=? , Class=? ] to book a flight..
+            * Enter [ Serch > One Or More Available Parameters ] to search for a flight..
+                
+                    Available Parameters :  DepartureCountry = ? , DestinationCountry = ?
+                    DepartureDate = ? , DepartureAirport = ?  , ArrivalAirport = ? , Price = ?
+            
+            * Enter [ Book > BookID=? , Class=? ] to book a flight..
             * Enter [ MyBookings ] to desplay your bookings..
-            * Enter [ ModifyBooking : flightId=? , newClass=? ] to edit specific booking..
-            * Enter [ CancelBooking : flightId=? ] to cancle specific booking..
+            * Enter [ ModifyBooking > flightId=? , newClass=? ] to edit specific booking..
+            * Enter [ CancelBooking > flightId=? ] to cancle specific booking..
             * Enter [ LogOut ] to return to LogIn Interface..
             * Enter Exit to exit..", MessageType.Menu);
         }

@@ -20,7 +20,7 @@ namespace AirportTicketBooking
                 if (paramaterSplit.Length < 2)
                     paramaterSplit = paramater.Split(' ');
                 string paramaterName = paramaterSplit[0].Trim().ToLower();
-                string value = paramaterSplit[1].Trim() ?? string.Empty;
+                string value = paramaterSplit[1].Trim();
                 return (paramaterName, value);
             }
             catch

@@ -2,7 +2,7 @@
 
 namespace AirportTicketBooking.Validation
 {
-    [AttributeUsage(AttributeTargets.Property, Inherited = false, AllowMultiple = false)]
+    [AttributeUsage(AttributeTargets.Property, Inherited = false, AllowMultiple = true)]
     sealed class PriceComparisonAttribute : ValidationAttribute
     {
         readonly public string OtherPrice;

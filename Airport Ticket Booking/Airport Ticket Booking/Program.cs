@@ -17,7 +17,7 @@ namespace AirportTicketBooking
                 (UserType userType, string email) = logInInterface.Start(userDataHandler);
 
                 FlightDataHandler flightDataHandler = new();
-                await flightDataHandler.FetchData(Paths.FlightDBPath, flight => flight.Id);
+                await flightDataHandler.FetchData(Paths.FlightDBPath, flight => flight.Id ?? 0);
                 BookingDataHandler bookingDataHandler = new();
                 await bookingDataHandler.FetchData(Paths.BookingDBPath, booking => booking.FlightId + booking.PassengerEmail);
                 UserInterface userInterface;

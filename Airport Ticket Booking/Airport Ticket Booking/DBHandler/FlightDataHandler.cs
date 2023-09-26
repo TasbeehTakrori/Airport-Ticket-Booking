@@ -13,22 +13,56 @@ namespace AirportTicketBooking.DBHandler
             }
             return flights;
         }
-        public List<Flight> getFlightList() 
+        public List<Flight> getFlightList()
         {
             return DataDictionary.Values.ToList();
         }
 
-        internal bool IsAvilableFlightID(int flightID)
+        internal bool IsAvailableFlightID(int flightID)
         {
             return DataDictionary.ContainsKey(flightID);
         }
 
         public Flight GetFlight(int flightID)
         {
-            if (IsAvilableFlightID(flightID))
+            if (IsAvailableFlightID(flightID))
                 return DataDictionary[flightID];
             else
                 return null;
+        }
+        internal int GetStartAavilableID()
+        {
+            return DataDictionary.Keys.Max();
+        }
+        private async Task ReFetchData()
+        {
+            try
+            {
+                await FetchData(Paths.FlightDBPath, flight => flight.Id ?? 0);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+        }
+        internal void ResetNewFlightsIDs()
+        {
+            foreach (var item in DataDictionary)
+            {
+                item.Value.Id = item.Key;
+            }
+        }
+        public bool TryToAppendToFlightsDB(List<Flight> newFlights) 
+        {
+            try
+            {
+                AppendDatas(Paths.FlightDBPath, newFlights);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

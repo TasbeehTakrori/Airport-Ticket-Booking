@@ -1,0 +1,6 @@
+id,departurecountry,destinationcountry,departuredate,departureairport,arrivalairport,economyprice,businessprice,firstclassprice
+,germany,japan,2023-09-29 12:00:00,,narita international airport,-20,1400,1900
+,australia,canada,2023-09-30 13:00:00,sydney airport,toronto pearson international airport,750,1000,2000
+,italy,spain,2023-10-01 14:00:00,leonardo da vinci-fiumicino airport,adolfo suárez madrid–barajas airport,800,700,2100
+,mexico,brazil,2023-10-02 15:00:00,mexico city international airport,guarulhos airport,850,1700,900
+,china,india,2022-10-03 16:00:00,,,900,,2300

@@ -43,8 +43,7 @@ namespace AirportTicketBooking.Commands.ManagerCommands
                 var rangeAttribute = property.GetCustomAttribute<RangeAttribute>();
                 if (rangeAttribute != null)
                 {
-                    if (rangeAttribute.Minimum.Equals(0))
-                        stringBuilder.Append($" Should be Positive,)");
+                        stringBuilder.Append($" Should be Positive, ");
                 }
 
                 var futureDateAttribute = property.GetCustomAttribute<FutureDateValidationAttribute>();
