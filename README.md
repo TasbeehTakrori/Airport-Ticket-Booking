@@ -25,6 +25,9 @@ Before you can use this Airport Ticket Booking system, you'll need the following
 1. NET Core SDK: Make sure you have the .NET Core SDK installed on your machine.
 
 2. Code Editor: You can use a code editor of your choice, such as Visual Studio or Visual Studio Code, for development (optional).
+  
+3. [CsvHelper](https://www.nuget.org/packages/CsvHelper/) (Version 30.0.1): A library for reading and writing CSV files.
+
 
 ####   .NET Version
 
