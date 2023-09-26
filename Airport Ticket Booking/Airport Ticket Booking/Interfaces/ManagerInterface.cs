@@ -1,5 +1,4 @@
 ﻿using AirportTicketBooking.Commands.ManagerCommands;
-using AirportTicketBooking.Commands.PassengerCommands;
 using AirportTicketBooking.DBHandler;
 using AirportTicketBooking.Enums;
 
@@ -9,8 +8,10 @@ namespace AirportTicketBooking.Interfaces
     {
         Dictionary<string, ICommandManager> _managerCommands = new()
         {
-            { "exit",  new AirportTicketBooking.Commands.ManagerCommands.ExitCommand() },
+            { "exit",  new ExitCommand() },
             { "filter", new FilterCommand() },
+            { "validationdetails", new ValidationDetailsCommand() },
+
         };
         internal override void Start(FlightDataHandler flightDataHandler, BookingDataHandler bookingDataHandler)
         {
@@ -41,6 +42,9 @@ namespace AirportTicketBooking.Interfaces
         {
             Utilities.PrintMessage(@"
             * Enter Help to learn how to use each command..
+            * Enter [ Filter : parameters=?... ] to filter booking..
+            * Enter [ ValidationDetails ] to display validation details flight..
+            * Enter [ LogOut ] to return to LogIn Interface..
             * Enter Exit to exit..", MessageType.Menu);
         }
     }

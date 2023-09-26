@@ -9,6 +9,7 @@ namespace AirportTicketBooking.Models
         public override string ToString()
         {
             return $@"Your Booking Class Type is ({Type})
+
             Details:  {Flight}";
         }
     }

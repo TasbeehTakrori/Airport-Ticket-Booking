@@ -23,7 +23,7 @@ namespace AirportTicketBooking.DBHandler
             return DataDictionary.ContainsKey(flightID);
         }
 
-        public Flight? GetFlight(int flightID)
+        public Flight GetFlight(int flightID)
         {
             if (IsAvilableFlightID(flightID))
                 return DataDictionary[flightID];

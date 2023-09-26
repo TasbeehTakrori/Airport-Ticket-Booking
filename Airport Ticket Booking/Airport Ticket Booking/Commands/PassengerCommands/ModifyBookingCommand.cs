@@ -15,7 +15,7 @@ namespace AirportTicketBooking.Commands.PassengerCommands
             int flightID = int.Parse(parametersDictionary["flightid"]);
             ClassType classType = ParseClassType(parametersDictionary["class"]);
             bookingDataHandler.ModifyBooking(userEmail, flightID, classType);
-            return new() { "Modify flight succeeded!" };
+            return new() { "Modify flight succeeded!" }; 
         }
     }
 }

@@ -18,8 +18,8 @@ namespace AirportTicketBooking.Commands.PassengerCommands
                 { "arra", (flight, value) => flight.ArrivalAirport == value },
                 { "departuredate", (flight, value) => flight.DepartureDate.Date == TryParseDateOrDefult(value)},
                 { "date", (flight, value) => flight.DepartureDate.Date == TryParseDateOrDefult(value).Date},
-                { "price", (flight, value) => flight.EconomyPrice <= TryParseIntOrDefult(value) || flight.BusinessPrice <= TryParseIntOrDefult(value) || flight.FirstClassPrice <= TryParseIntOrDefult(value) },
-                { "p", (flight, value) => flight.EconomyPrice <= TryParseIntOrDefult(value) || flight.BusinessPrice <= TryParseIntOrDefult(value) || flight.FirstClassPrice <= TryParseIntOrDefult(value) },
+                { "price", (flight, value) => flight.EconomyPrice <= TryParseDecimalOrDefult(value) || flight.BusinessPrice <= TryParseDecimalOrDefult(value) || flight.FirstClassPrice <= TryParseDecimalOrDefult(value) },
+                { "p", (flight, value) => flight.EconomyPrice <= TryParseDecimalOrDefult(value) || flight.BusinessPrice <= TryParseDecimalOrDefult(value) || flight.FirstClassPrice <= TryParseDecimalOrDefult(value) },
         };
 
         public List<object> Execute(string userEmail, string[] parameters, FlightDataHandler flightDataHandler, BookingDataHandler bookingDataHandler)
@@ -52,6 +52,14 @@ namespace AirportTicketBooking.Commands.PassengerCommands
                 return result;
             else
                 return int.MinValue;
+        }
+
+        private static decimal TryParseDecimalOrDefult(string value)
+        {
+            if (decimal.TryParse(value, out decimal result))
+                return result;
+            else
+                return decimal.MinValue;
         }
 
         private static DateTime TryParseDateOrDefult(string value)
