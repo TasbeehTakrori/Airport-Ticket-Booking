@@ -11,7 +11,7 @@ namespace AirportTicketBooking.Interfaces
         internal virtual void Start(FlightDataHandler flightDataHandler, BookingDataHandler bookingDataHandler)
         { }
 
-        internal void Desplay(List<object> result)
+        internal void Display(List<object> result)
         {
             foreach (var item in result)
             {

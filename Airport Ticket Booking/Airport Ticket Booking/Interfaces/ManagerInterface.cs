@@ -27,7 +27,7 @@ namespace AirportTicketBooking.Interfaces
                 {
                     command = _managerCommands[commandName];
                     result = command.Execute(commandParameters, flightDataHandler, bookingDataHandler);
-                    Desplay(result);
+                    Display(result);
                 }
                 else if (commandName.ToLower().Equals("logout"))
                 {

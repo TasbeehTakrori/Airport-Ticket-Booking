@@ -33,7 +33,7 @@ namespace AirportTicketBooking.Interfaces
                 {
                     command = _passengerCommands[commandName];
                     result = command.Execute(email, commandParameters, flightDataHandler, bookingDataHandler);
-                    Desplay(result);
+                    Display(result);
                 }
                 else if (commandName.ToLower().Equals("logout"))
                 {
@@ -55,7 +55,7 @@ namespace AirportTicketBooking.Interfaces
                     DepartureDate = ? , DepartureAirport = ?  , ArrivalAirport = ? , Price = ?
             
             * Enter [ Book > BookID=? , Class=? ] to book a flight..
-            * Enter [ MyBookings ] to desplay your bookings..
+            * Enter [ MyBookings ] to display your bookings..
             * Enter [ ModifyBooking > flightId=? , newClass=? ] to edit specific booking..
             * Enter [ CancelBooking > flightId=? ] to cancle specific booking..
             * Enter [ LogOut ] to return to LogIn Interface..
