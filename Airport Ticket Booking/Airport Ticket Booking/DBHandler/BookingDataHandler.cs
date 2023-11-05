@@ -3,7 +3,7 @@ using AirportTicketBooking.Enums;
 
 namespace AirportTicketBooking.DBHandler
 {
-    internal class BookingDataHandler : CsvDataHandler<string, Booking, BookingMap>
+    public class BookingDataHandler : CsvDataHandler<string, Booking, BookingMap>
     {
         internal bool AlreadyBooked(string userEmail, string flightID)
         {

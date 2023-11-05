@@ -1,10 +1,10 @@
 ﻿namespace AirportTicketBooking
 {
-    static internal class Paths
+    static public class Paths
     {
-        internal static string Directory = @"..\..\..\..\..\DataBase\";
-        internal static string UserDBPath = Directory + "UserDB.csv";
-        internal static string FlightDBPath = Directory + "FlightDB.csv";
-        internal static string BookingDBPath = Directory + "BookingDB.csv";
+        public static string Directory = @"..\..\..\..\..\DataBase\";
+        public static string UserDBPath = Directory + "UserDB.csv";
+        public static string FlightDBPath = Directory + "FlightDB.csv";
+        public static string BookingDBPath = Directory + "BookingDB.csv";
     }
 }

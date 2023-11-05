@@ -3,7 +3,7 @@ using AirportTicketBooking.Models;
 
 namespace AirportTicketBooking.DBHandler
 {
-    internal class FlightMap : ClassMap<Flight>
+    public class FlightMap : ClassMap<Flight>
     {
         public FlightMap()
         {

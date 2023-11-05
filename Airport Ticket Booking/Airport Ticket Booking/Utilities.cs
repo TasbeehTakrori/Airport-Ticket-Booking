@@ -12,7 +12,7 @@ namespace AirportTicketBooking
             Console.WriteLine();
             Console.ForegroundColor = originalColor;
         }
-        static public (string parameterName, string value) SplitParameterNameFromValue(string paramater)
+        static public (string , string ) SplitParameterNameFromValue(string paramater)
         {
             try
             {

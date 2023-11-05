@@ -3,7 +3,7 @@ using AirportTicketBooking.Models;
 
 namespace AirportTicketBooking.Commands.PassengerCommands
 {
-    internal class MyBookingCommand : ICommandPassenger
+    public class MyBookingCommand : ICommandPassenger
     {
         public List<object> Execute(string userEmail, string[] parameters, FlightDataHandler flightDataHandler, BookingDataHandler bookingDataHandler)
         {

@@ -2,7 +2,7 @@
 
 namespace AirportTicketBooking.DBHandler
 {
-    internal class FlightDataHandler : CsvDataHandler<int, Flight, FlightMap>
+    public class FlightDataHandler : CsvDataHandler<int, Flight, FlightMap>
     {
         public List<Flight> Filter(List<(Func<Flight, string, bool> condition, string value)> filters)
         {
