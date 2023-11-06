@@ -3,10 +3,10 @@ name: build and test
 on:
   push:
   pull_request:
-    branches: [ main ]
+    branches: [main]
     paths:
-    - '**.cs'
-    - '**.csproj'
+      - '**.cs'
+      - '**.csproj'
 
 env:
   DOTNET_VERSION: '7.0' # The .NET SDK version to use
@@ -34,8 +34,8 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
     
-   - name: Move DataBase to specific directory
-      run: mv ${{ env.DB_PATH }} /home/runner/work/Airport-Ticket-Booking/Airport-Ticket-Booking/AirportTicketBooking.Test/bin/Debug/net7.0 
+    - name: Move DataBase to specific directory
+      run: mv ${{ env.DB_PATH }} /home/runner/work/Airport-Ticket-Booking/Airport-Ticket-Booking/AirportTicketBooking.Test/bin/Debug/net7.0/
 
     - name: Test
       run: dotnet test --no-restore --verbosity normal
