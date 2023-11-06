@@ -10,6 +10,7 @@ on:
 
 env:
   DOTNET_VERSION: '7.0' # The .NET SDK version to use
+  DB_PATH: DataBase
 
 jobs:
   build-and-test:
