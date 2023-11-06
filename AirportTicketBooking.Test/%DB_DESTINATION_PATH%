@@ -1,0 +1,26 @@
+FlightId,PassengerEmail,Class
+2,a@g.c,First
+2,t,Economy
+3,t,First
+id,departurecountry,destinationcountry,departuredate,departureairport,arrivalairport,economyprice,businessprice,firstclassprice
+1,usa,uk,2023-09-25 08:00:00,john f. kennedy international airport,heathrow airport,500,1000,1500
+2,uk,usa,2023-09-26 09:00:00,heathrow airport,john f. kennedy international airport,550.5,1100.99,1600
+3,canada,france,2023-09-27 10:00:00,toronto pearson international airport,charles de gaulle airport,600,1200,1700
+4,france,canada,2023-09-28 11:00:00,charles de gaulle airport,toronto pearson international airport,650,1300,1800
+5,canada,palestine,2023-09-27 10:00:00,toronto pearson international airport,charles de gaulle airport,600,1200,17006
+,germany,japan,2023-09-29 12:00:00,frankfurt airport,narita international airport,700,1400,1900
+,australia,canada,2023-09-30 13:00:00,sydney airport,toronto pearson international airport,750,1500,2000
+,italy,spain,2023-10-01 14:00:00,leonardo da vinci-fiumicino airport,adolfo suárez madrid–barajas airport,800,1600,2100
+,mexico,brazil,2023-10-02 15:00:00,mexico city international airport,guarulhos airport,850,1700,2200
+,china,india,2023-10-03 16:00:00,beijing capital international airport,chhatrapati shivaji maharaj international airport,900,1800,2300
+id,departurecountry,destinationcountry,departuredate,departureairport,arrivalairport,economyprice,businessprice,firstclassprice
+,germany,japan,2023-09-29 12:00:00,,narita international airport,-20,1400,1900
+,australia,canada,2023-09-30 13:00:00,sydney airport,toronto pearson international airport,750,1000,2000
+,italy,spain,2023-10-01 14:00:00,leonardo da vinci-fiumicino airport,adolfo suárez madrid–barajas airport,800,700,2100
+,mexico,brazil,2023-10-02 15:00:00,mexico city international airport,guarulhos airport,850,1700,900
+,china,india,2022-10-03 16:00:00,,,900,,2300
+Email,Password,Type
+t,1,0
+a@g.c,12346,0
+s@g.c,123456,0
+Admin@g.c,123456,1
