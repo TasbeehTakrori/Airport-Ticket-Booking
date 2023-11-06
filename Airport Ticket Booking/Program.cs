@@ -8,7 +8,6 @@ namespace AirportTicketBooking
     {
         public static async Task Main(string[] args)
         {
-            Console.WriteLine("$$$"+ Environment.GetEnvironmentVariable("DB_PATH"));
             UserDataHandler userDataHandler = new();
             await userDataHandler.FetchData(Paths.UserDBPath, user => user.Email);
             PrintWelcome();
