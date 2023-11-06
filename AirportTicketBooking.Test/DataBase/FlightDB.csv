@@ -1,0 +1,6 @@
+id,departurecountry,destinationcountry,departuredate,departureairport,arrivalairport,economyprice,businessprice,firstclassprice
+1,usa,uk,2023-09-25 08:00:00,john f. kennedy international airport,heathrow airport,500,1000,1500
+2,uk,usa,2023-09-26 09:00:00,heathrow airport,john f. kennedy international airport,550.5,1100.99,1600
+3,canada,france,2023-09-27 10:00:00,toronto pearson international airport,charles de gaulle airport,600,1200,1700
+4,france,canada,2023-09-28 11:00:00,charles de gaulle airport,toronto pearson international airport,650,1300,1800
+5,canada,palestine,2023-09-27 10:00:00,toronto pearson international airport,charles de gaulle airport,600,1200,17006
