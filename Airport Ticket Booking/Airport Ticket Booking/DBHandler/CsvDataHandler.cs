@@ -4,7 +4,7 @@ using System.Globalization;
 
 namespace AirportTicketBooking.DBHandler
 {
-    internal class CsvDataHandler<TKey, TModel, TMapper> where TKey : IEquatable<TKey> where TMapper : ClassMap<TModel>
+    public class CsvDataHandler<TKey, TModel, TMapper> where TKey : IEquatable<TKey> where TMapper : ClassMap<TModel>
     {
         protected Dictionary<TKey, TModel> DataDictionary { get; set; } = new();
         public async Task FetchData(

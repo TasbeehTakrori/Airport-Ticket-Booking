@@ -3,7 +3,7 @@
     public enum UserType
     {
         Passenger,
-        Mannager,
+        Manager,
         NotLoggedIn,
     }
 }
